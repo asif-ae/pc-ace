@@ -5,17 +5,18 @@ import {
   Route
 } from "react-router-dom";
 import './App.css';
+import NotMatched from './components/NotMatched/NotMatched';
 
 function App() {
   return (
     <Fragment>
       <Router>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             
           </Route>
-          <Route path="/">
-            
+          <Route path="*">
+            <NotMatched></NotMatched>
           </Route>
         </Switch>
       </Router>
