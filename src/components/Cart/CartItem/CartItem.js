@@ -1,7 +1,8 @@
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Fragment } from 'react';
-
+import { connect } from 'react-redux';
+import { removeFromCart } from '../../../redux/Shopping/shoppingActions';
 const CartItem = ({item}) => {
   return (
     <Fragment>
@@ -26,4 +27,10 @@ const CartItem = ({item}) => {
   );
 };
 
-export default CartItem;
+const mapDispatchToProps = dispatch => {
+  return {
+    removeFromCart: (id) => dispatch(removeFromCart(id))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(CartItem);
