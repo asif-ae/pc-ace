@@ -1,12 +1,9 @@
-import { Fragment } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-import './App.css';
-import Home from './components/Home/Home';
-import NotMatched from './components/NotMatched/NotMatched';
+import { Fragment } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
+import Home from "./components/Home/Home";
+import NotMatched from "./components/NotMatched/NotMatched";
+import Products from "./components/Products/Products";
 
 function App() {
   return (
@@ -15,6 +12,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home></Home>
+          </Route>
+          <Route path="/products">
+            <Products></Products>
           </Route>
           <Route path="*">
             <NotMatched></NotMatched>

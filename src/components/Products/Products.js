@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Product from "./Product/Product";
 const Products = ({ products }) => {
+  console.log(products);
   return (
     <div className="">
       {products.map((product) => (
