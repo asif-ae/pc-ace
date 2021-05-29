@@ -1,9 +1,15 @@
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import { removeFromCart } from '../../../redux/Shopping/shoppingActions';
-const CartItem = ({item}) => {
+import { removeFromCart, adjustQTY } from '../../../redux/Shopping/shoppingActions';
+
+const CartItem = ({ item, removeFromCart, adjustQTY }) => {
+  const [input, setInput] = useState(item.qty);
+  const onChangeHandler = (e) => {
+    setInput(e.target.value);
+    adjustQTY(item.id, e.target.value)
+  }
   return (
     <Fragment>
       <div className="a">
@@ -16,9 +22,9 @@ const CartItem = ({item}) => {
         <div className="a">
           <div className="b">
             <label htmlFor="qty">Quantity</label>
-            <input type="number" name="qty" id="qty" min="1" value={item.qty} />
+            <input type="number" name="qty" id="qty" min="1" value={input} onChange={onChangeHandler} />
           </div>
-          <button className="a">
+          <button onClick={() => removeFromCart(item.id)} className="a">
             <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
           </button>
         </div>
@@ -29,7 +35,8 @@ const CartItem = ({item}) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeFromCart: (id) => dispatch(removeFromCart(id))
+    removeFromCart: (id) => dispatch(removeFromCart(id)),
+    adjustQTY: (id, value) => dispatch(adjustQTY(id, value))
   }
 }
 
