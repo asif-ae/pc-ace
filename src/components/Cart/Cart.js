@@ -15,6 +15,8 @@ const Cart = ({cart}) => {
       items += item.qty;
       price += item.qty * item.price;
     });
+    setTotalPrice(price);
+    setTotalItems(items);
   }, [cart, totalPrice, setTotalPrice, totalItems, setTotalItems])
   return (
     <Fragment>
@@ -28,8 +30,8 @@ const Cart = ({cart}) => {
         <div className="a">
           <h4 className="a">Cart Summery</h4>
           <div className="a">
-            <span className="a">Total: 1 item(s)</span>
-            <span className="a">$15.00</span>
+            <span className="a">Total: {totalItems} item(s)</span>
+            <span className="a">${totalPrice}</span>
           </div>
           <button className="a">Proceed To Checkout!</button>
         </div>
