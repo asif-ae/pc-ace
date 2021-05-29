@@ -1,0 +1,38 @@
+a,
+a:link,
+a:hover,
+a:focus,
+a:visited {
+  color: white !important;
+}
+
+a:active {
+  color: salmon;
+}
+
+.navbar-style {
+  background-color: crimson;
+}
+
+.cart-icon-styles {
+  color: crimson;
+}
+
+.menu-icon-styles {
+  color: white;
+}
+
+.menu-button-styles,
+.menu-button-styles:focus,
+.menu-button-styles:focus-visible,
+.menu-button-styles:focus-within {
+  outline: none !important;
+  outline-color: transparent !important;
+  outline-width: 0 !important;
+  border: none !important;
+  border-color: transparent !important;
+}
+
+.cart-items-amount {
+  color: crimson;
+}
