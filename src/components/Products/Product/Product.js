@@ -2,20 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Product.module.css';
 
+import { connect } from "react-redux";
+import { addToCart } from "../../../redux/Shopping/shoppingActions";
 
-const Product = ({ productData }) => {
+const Product = ({ product, addToCart, loadCurrentItem }) => {
     return (
         <div className={styles.product}>
       <img
         className={styles.product__image}
-        src={productData.image}
-        alt={productData.title}
+        src={product.image}
+        alt={product.title}
       />
 
       <div className={styles.product__details}>
-        <p className={styles.details__title}>{productData.title}</p>
-        <p className={styles.details__desc}>{productData.description}</p>
-        <p className={styles.details__price}>$ {productData.price}</p>
+        <p className={styles.details__title}>{product.title}</p>
+        <p className={styles.details__desc}>{product.description}</p>
+        <p className={styles.details__price}>$ {product.price}</p>
       </div>
 
       <div className={styles.product__buttons}>
@@ -27,6 +29,7 @@ const Product = ({ productData }) => {
           </button>
         </Link>
         <button
+          onClick={() => addToCart(product.id)}
           className={`${styles.buttons__btn} ${styles.buttons__add}`}
         >
           Add To Cart
@@ -35,5 +38,10 @@ const Product = ({ productData }) => {
     </div>
   );
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCart: (id) => dispatch(addToCart(id)),
+  };
+};
 
-export default Product;
+export default connect(null, mapDispatchToProps)(Product);
