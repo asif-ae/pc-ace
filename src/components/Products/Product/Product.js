@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { addToCart } from "../../../redux/Shopping/shoppingActions";
 
 const Product = ({ product, addToCart, loadCurrentItem }) => {
+  console.log(product);
   return (
     <Fragment>
       <div className="container">
