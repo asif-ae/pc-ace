@@ -1,9 +1,21 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-const Navbar = () => {
+
+import { connect } from "react-redux";
+const Navbar = ({ cart }) => {
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    let count = 0;
+    cart.forEach((item) => {
+      count += item.qty;
+    });
+
+    setCartCount(count);
+  }, [cart, cartCount]);
   return (
     <Fragment>
       <nav
@@ -48,7 +60,7 @@ const Navbar = () => {
                       className="cart-icon-styles"
                     />
                   </span>
-                  &nbsp;<span className="px-1">1</span>
+                  &nbsp;<span className="px-1">{cartCount}</span>
                 </span>
               </Link>
             </div>
@@ -59,4 +71,10 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.shop.cart,
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);

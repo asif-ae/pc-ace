@@ -1,14 +1,18 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
+import Navbar from "../Navbar/Navbar";
 import Product from "./Product/Product";
 const Products = ({ products }) => {
   console.log(products);
   return (
-    <div className="">
-      {products.map((product) => (
-        <Product key={product.id} product={product} />
-      ))}
-    </div>
+    <Fragment>
+      <Navbar></Navbar>
+      <div className="">
+        {products.map((product) => (
+          <Product key={product.id} product={product} />
+        ))}
+      </div>
+    </Fragment>
   );
 };
 
