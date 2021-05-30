@@ -4,6 +4,9 @@ import Navbar from '../Navbar/Navbar';
 import CartItem from './CartItem/CartItem';
 import customStyles from '../Products/Product/Product.module.css';
 import { removeFromCart } from '../../redux/Shopping/shoppingActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const { textBlue, textCrimson } = customStyles;
 
@@ -28,6 +31,24 @@ const Cart = ({cart, removeFromCart}) => {
       removeFromCart(items.id);
     });
   }
+
+  const noProductAlert = () => {
+    return (
+      <div className="py-5">
+        <div class="alert alert-primary d-flex align-items-center justify-content-center" role="alert">
+          <div style={{fontSize: "20px"}}>
+            <span className="p-3"><FontAwesomeIcon icon={faInfoCircle} size="lg"></FontAwesomeIcon></span>
+            Oops! Your cart is empty!
+          </div>
+        </div>
+        <div className="py-5 text-center">
+          <Link to="/products">
+            <button className="btn btn-success text-uppercase" style={{fontSize: "20px"}}>Shop Now</button>
+          </Link>
+        </div>
+      </div>
+    )
+  }
   return (
     <Fragment>
       <Navbar></Navbar>
@@ -36,6 +57,9 @@ const Cart = ({cart, removeFromCart}) => {
           <div className="row p-0 m-0">
             <div className="col-md-7">
               <div className="py-3">
+                {
+                  !cart.length && noProductAlert()
+                }
                 {
                   cart.map(item => <CartItem item={item} key={item.id}></CartItem>)
                 }
