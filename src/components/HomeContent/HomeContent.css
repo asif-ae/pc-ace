@@ -1,0 +1,21 @@
+.home-section{
+    background-color: #3D9BFF;
+    height: 570px;
+}
+.home-second-div h1{
+    font-weight: 700;
+}
+.home-second-div p{
+    font-size: 18px;
+    font-weight: 400;
+}
+.btn-brand{
+    padding: 8px 30px;
+    background-color: #DC143C;
+    color: #fff;
+    font-weight: bold;
+}
+.btn-brand:hover{
+    background-color: #fff;
+    color: #DC143C;
+}
