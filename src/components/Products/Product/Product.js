@@ -2,10 +2,10 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { addToCart } from "../../../redux/Shopping/shoppingActions";
+import { addToCart, loadCurrentItem } from "../../../redux/Shopping/shoppingActions";
 
 const Product = ({ product, addToCart, loadCurrentItem }) => {
-  console.log(product);
+  console.log(product.id);
   return (
     <Fragment>
       <div className="container">
@@ -18,7 +18,7 @@ const Product = ({ product, addToCart, loadCurrentItem }) => {
         </div>
 
         <div>
-          <Link to={`/product/someID`}>
+          <Link onClick={() => loadCurrentItem(product)} to={`/product/${product.id}`}>
             <button>View Item</button>
           </Link>
           <button onClick={() => addToCart(product.id)}>Add To Cart</button>
@@ -30,6 +30,7 @@ const Product = ({ product, addToCart, loadCurrentItem }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addToCart: (id) => dispatch(addToCart(id)),
+    loadCurrentItem: (item) => dispatch(loadCurrentItem(item)),
   };
 };
 

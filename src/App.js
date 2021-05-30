@@ -1,12 +1,14 @@
 import { Fragment } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Cart from "./components/Cart/Cart";
 import Home from "./components/Home/Home";
 import NotMatched from "./components/NotMatched/NotMatched";
+import Product from "./components/Products/Product/Product";
 import Products from "./components/Products/Products";
 
-function App() {
+function App({ currentItem }) {
   return (
     <Fragment>
       <Router>
@@ -17,6 +19,15 @@ function App() {
           <Route path="/products">
             <Products></Products>
           </Route>
+          {
+            !currentItem ? (
+              <Redirect to="/"></Redirect>
+            ) : (
+              <Route path="/product/:id">
+                {/* <Product></Product> */}
+              </Route>
+            )
+          }
           <Route path="/cart">
             <Cart></Cart>
           </Route>
@@ -29,4 +40,10 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    currentItem: state.shop.currentItem,
+  }
+}
+
+export default connect(mapStateToProps)(App);
