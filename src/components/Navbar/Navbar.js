@@ -19,7 +19,7 @@ const Navbar = ({ cart }) => {
   return (
     <Fragment>
       <nav
-        className="navbar navbar-expand-lg navbar-style"
+        className="navbar navbar-expand-lg navbar-style sticky-top"
         style={{ color: "navy" }}
       >
         <div className="container-fluid d-flex align-items-center">
