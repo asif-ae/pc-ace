@@ -31,7 +31,7 @@ const CartItem = ({ item, removeFromCart, adjustQTY }) => {
                 <div className="row p-0 m-0">
                   <div className="col-6 p-0 m-0">
                     <div className="form-floating mb-3">
-                      <input type="number" name="qty" class="form-control" id="floatingInput" min="1" value={input} onChange={onChangeHandler} />
+                      <input type="number" name="qty" className="form-control" id="floatingInput" min="1" value={input} onChange={onChangeHandler} />
                       <label htmlFor="qty">Quantity</label>
                     </div>
                   </div>

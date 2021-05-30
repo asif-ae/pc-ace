@@ -18,9 +18,13 @@ const Cart = ({cart}) => {
       items += item.qty;
       price += item.qty * item.price;
     });
-    setTotalPrice(price);
+    setTotalPrice(price.toFixed(2));
     setTotalItems(items);
-  }, [cart, totalPrice, setTotalPrice, totalItems, setTotalItems])
+  }, [cart, totalPrice, setTotalPrice, totalItems, setTotalItems]);
+
+  const successMessage = async () => {
+    await alert("Hello! I am an alert box!");
+  }
   return (
     <Fragment>
       <Navbar></Navbar>
@@ -45,7 +49,7 @@ const Cart = ({cart}) => {
                     <h4 className="a">Total Prise: <span className={`${textCrimson}`}>${totalPrice}</span></h4>
                   </div>
                   <div className="d-flex justify-content-end">
-                    <button className="btn btn-outline-success text-uppercase">Proceed To Checkout!</button>
+                    <button onClick={() => {successMessage(); setTotalPrice(0); setTotalItems(0);}} className="btn btn-outline-success text-uppercase">Proceed To Checkout!</button>
                   </div>
                 </div>
               </div>
