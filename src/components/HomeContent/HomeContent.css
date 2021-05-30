@@ -1,6 +1,8 @@
 .home-section{
     background-color: #3D9BFF;
-    height: 570px;
+    min-height: calc(100vh - 56px);
+    min-height: -webkit-calc(100vh - 56px);
+    min-height: -moz-calc(100vh - 56px);
 }
 .home-second-div h1{
     font-weight: 700;
