@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addToCart } from '../../redux/Shopping/shoppingActions';
 
-const SingleItem = ({currentItem}) => {
+const SingleItem = ({currentItem, addToCart}) => {
     return (
         <div className={styles.singleItem}>
             <img className="img-fluid" src={currentItem.image} alt="" />
@@ -8,7 +10,7 @@ const SingleItem = ({currentItem}) => {
                 <p>{currentItem.title}</p>
                 <p>{currentItem.description}</p>
                 <p>{currentItem.price}</p>
-                <button className="btn btn-primary">Add To Cart</button>
+                <button onClick={() => addToCart(currentItem.id)} className="btn btn-primary">Add To Cart</button>
             </div>
         </div>
     );
@@ -20,4 +22,10 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default SingleItem;
+const mapDispatchToProps = (dispatch) => {
+    return{
+        addToCart: (id) => dispatch(addToCart(id))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleItem);
