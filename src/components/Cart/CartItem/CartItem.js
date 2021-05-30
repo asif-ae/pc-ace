@@ -12,21 +12,35 @@ const CartItem = ({ item, removeFromCart, adjustQTY }) => {
   }
   return (
     <Fragment>
-      <div className="a">
-        <img src={item.image} alt={item.title} />
-        <div className="a">
-          <p className="a">{item.title}</p>
-          <p className="b">{item.description}</p>
-          <p className="c">${item.price}</p>
-        </div>
-        <div className="a">
-          <div className="b">
-            <label htmlFor="qty">Quantity</label>
-            <input type="number" name="qty" id="qty" min="1" value={input} onChange={onChangeHandler} />
+      <div className="p-3 shadow rounded">
+        <div className="row m-0 p-0 d-flex align-items-center">
+          <div className="col-3">
+            <img src={item.image} alt={item.title} className="w-100" />
           </div>
-          <button onClick={() => removeFromCart(item.id)} className="a">
-            <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
-          </button>
+          <div className="col-9">
+            <div className="p-3">
+              <div className="a">
+                <h3 className="a">{item.title}</h3>
+                <p className="b">{item.description}</p>
+                <p className="c">${item.price}</p>
+              </div>
+              <div className="row p-0 m-0">
+                <div className="col-6 p-0 m-0">
+                  <div className="form-floating mb-3">
+                    <input type="number" name="qty" class="form-control" id="floatingInput" min="1" value={input} onChange={onChangeHandler} />
+                    <label htmlFor="qty">Quantity</label>
+                  </div>
+                </div>
+                <div className="col-6 text-end">
+                  <div className="pt-2 pe-5">
+                    <button onClick={() => removeFromCart(item.id)} className="btn btn-outline-danger text-uppercase">
+                      <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Fragment>
