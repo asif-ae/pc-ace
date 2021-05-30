@@ -5,8 +5,8 @@ import "./App.css";
 import Cart from "./components/Cart/Cart";
 import Home from "./components/Home/Home";
 import NotMatched from "./components/NotMatched/NotMatched";
-// import Product from "./components/Products/Product/Product";
 import Products from "./components/Products/Products";
+import SingleItem from "./components/SingleItem/SingleItem";
 
 function App({ currentItem }) {
   return (
@@ -16,21 +16,21 @@ function App({ currentItem }) {
           <Route exact path="/">
             <Home></Home>
           </Route>
-          <Route path="/products">
+          <Route exact path="/products">
             <Products></Products>
           </Route>
-          {
-            // !currentItem ? (
-            //   <Redirect to="/"></Redirect>
-            // ) : (
-            //   <Route path="/product/:id">
-            //     {/* <Product></Product> */}
-            //   </Route>
-            // )
-          }
-          <Route path="/cart">
+          <Route exact path="/cart">
             <Cart></Cart>
           </Route>
+          {
+            !currentItem ? (
+              <Redirect to="/"></Redirect>
+            ) : (
+              <Route exact path="/product/:id">
+                <SingleItem></SingleItem>
+              </Route>
+            )
+          }
           <Route path="*">
             <NotMatched></NotMatched>
           </Route>

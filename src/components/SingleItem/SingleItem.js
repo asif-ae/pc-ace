@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { addToCart } from '../../redux/Shopping/shoppingActions';
+import Navbar from '../Navbar/Navbar';
 
 const SingleItem = ({currentItem, addToCart}) => {
     return (
-        <div>
-            <img className="img-fluid" src={currentItem.image} alt="" />
+        <Fragment>
+            <Navbar></Navbar>
+            <img className="img-fluid" src={currentItem.image} alt={currentItem.title} />
             <div>
                 <p>{currentItem.title}</p>
                 <p>{currentItem.description}</p>
                 <p>{currentItem.price}</p>
                 <button onClick={() => addToCart(currentItem.id)} className="btn btn-primary">Add To Cart</button>
             </div>
-        </div>
+        </Fragment>
     );
 };
 
