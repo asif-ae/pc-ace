@@ -4,7 +4,7 @@ import { addToCart } from '../../redux/Shopping/shoppingActions';
 
 const SingleItem = ({currentItem, addToCart}) => {
     return (
-        <div className={styles.singleItem}>
+        <div>
             <img className="img-fluid" src={currentItem.image} alt="" />
             <div>
                 <p>{currentItem.title}</p>
