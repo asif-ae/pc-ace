@@ -8,14 +8,16 @@
     font-weight: 700;
 }
 .home-second-div p{
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
 }
 .btn-brand{
     padding: 8px 30px;
     background-color: #DC143C;
     color: #fff;
+    font-size: 20px !important;
     font-weight: bold;
+    font-weight: 700;
 }
 .btn-brand:hover{
     background-color: #fff;
