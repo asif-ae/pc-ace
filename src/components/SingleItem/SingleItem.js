@@ -7,7 +7,9 @@ const SingleItem = ({currentItem, addToCart}) => {
     return (
         <Fragment>
             <Navbar></Navbar>
-            <img className="img-fluid" src={currentItem.image} alt={currentItem.title} />
+            <div className="row p-0 m-0">
+                <img className="img-fluid" src={currentItem.image} alt={currentItem.title} />
+            </div>
             <div>
                 <p>{currentItem.title}</p>
                 <p>{currentItem.description}</p>
