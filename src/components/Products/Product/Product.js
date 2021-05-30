@@ -4,24 +4,24 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { addToCart, loadCurrentItem } from "../../../redux/Shopping/shoppingActions";
 
-const Product = ({ product, addToCart, loadCurrentItem }) => {
-  console.log(product.id);
+const Product = ({ productData, addToCart, loadCurrentItem }) => {
   return (
     <Fragment>
-      <div className="container">
-        <img src={product.image} alt={product.title} className="w-100" />
+      <div>
+        <img src={productData.image} alt={productData.title} className="w-100" />
 
         <div>
-          <p>{product.title}</p>
-          <p>{product.description}</p>
-          <p>$ {product.price}</p>
+          <p>{productData.title}</p>
+          <p>{productData.description}</p>
+          <p>${productData.price}</p>
         </div>
 
         <div>
-          <Link onClick={() => loadCurrentItem(product)} to={`/product/${product.id}`}>
+          <Link onClick={() => loadCurrentItem(productData)} to={`/product/${productData.id}`}>
             <button>View Item</button>
           </Link>
-          <button onClick={() => addToCart(product.id)}>Add To Cart</button>
+          <button onClick={() => addToCart(productData.id)}>Add To Cart</button>
+          {console.log(productData.id)}
         </div>
       </div>
     </Fragment>

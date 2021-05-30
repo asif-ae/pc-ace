@@ -9,7 +9,7 @@ const Products = ({ products }) => {
       <Navbar></Navbar>
       <div className="">
         {products.map((product) => (
-          <Product key={product.id} product={product} />
+          <Product key={product.id} productData={product} />
         ))}
       </div>
     </Fragment>

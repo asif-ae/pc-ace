@@ -11,11 +11,9 @@ const shopReducer = (state = INITIAL_STATE, action) => {
   switch(action.type) {
     case actionTypes.ADD_TO_CART:
       // Set the items data from the products array
-      const item = state.products.find(selectedProduct => selectedProduct.id === action.payload.id);
+      const item = state.products.find(stateProduct => stateProduct.id === action.payload.id);
       // Check if item is in cart already
-      const inCart = state.cart.find((item) =>
-        item.id === item.payload.id ? true : false
-      );
+      const inCart = state.cart.find(stateCart => stateCart.id === action.payload.id ? true : false);
       return {
         ...state,
         cart: inCart

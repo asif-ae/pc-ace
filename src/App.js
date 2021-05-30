@@ -5,7 +5,7 @@ import "./App.css";
 import Cart from "./components/Cart/Cart";
 import Home from "./components/Home/Home";
 import NotMatched from "./components/NotMatched/NotMatched";
-import Product from "./components/Products/Product/Product";
+// import Product from "./components/Products/Product/Product";
 import Products from "./components/Products/Products";
 
 function App({ currentItem }) {
@@ -20,13 +20,13 @@ function App({ currentItem }) {
             <Products></Products>
           </Route>
           {
-            !currentItem ? (
-              <Redirect to="/"></Redirect>
-            ) : (
-              <Route path="/product/:id">
-                {/* <Product></Product> */}
-              </Route>
-            )
+            // !currentItem ? (
+            //   <Redirect to="/"></Redirect>
+            // ) : (
+            //   <Route path="/product/:id">
+            //     {/* <Product></Product> */}
+            //   </Route>
+            // )
           }
           <Route path="/cart">
             <Cart></Cart>
