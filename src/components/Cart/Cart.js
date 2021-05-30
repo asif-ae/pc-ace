@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import Navbar from '../Navbar/Navbar';
 import CartItem from './CartItem/CartItem';
 import customStyles from '../Products/Product/Product.module.css';
+import { removeFromCart } from '../../redux/Shopping/shoppingActions';
 
 const { textBlue, textCrimson } = customStyles;
 
-const Cart = ({cart}) => {
-  console.log(cart);
+const Cart = ({cart, removeFromCart}) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
   useEffect(() => {
@@ -23,7 +23,10 @@ const Cart = ({cart}) => {
   }, [cart, totalPrice, setTotalPrice, totalItems, setTotalItems]);
 
   const successMessage = async () => {
-    await alert("Hello! I am an alert box!");
+    await alert("Thank you! Your order has been placed successfully! Please, check your email!");
+    cart.forEach(items => {
+      removeFromCart(items.id);
+    });
   }
   return (
     <Fragment>
@@ -49,7 +52,7 @@ const Cart = ({cart}) => {
                     <h4 className="a">Total Prise: <span className={`${textCrimson}`}>${totalPrice}</span></h4>
                   </div>
                   <div className="d-flex justify-content-end">
-                    <button onClick={() => {successMessage(); setTotalPrice(0); setTotalItems(0);}} className="btn btn-outline-success text-uppercase">Proceed To Checkout!</button>
+                    <button onClick={() => {cart.length && successMessage();}} className="btn btn-outline-success text-uppercase">Proceed To Checkout!</button>
                   </div>
                 </div>
               </div>
@@ -67,4 +70,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = dispatch => {
+  return {
+    removeFromCart: (id) => dispatch(removeFromCart(id)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
