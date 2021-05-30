@@ -1,27 +1,31 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-
+import productStyles from './Product.module.css';
 import { connect } from "react-redux";
 import { addToCart, loadCurrentItem } from "../../../redux/Shopping/shoppingActions";
+
+const { btnView, textBlue, textCrimson } = productStyles;
 
 const Product = ({ productData, addToCart, loadCurrentItem }) => {
   return (
     <Fragment>
-      <div>
-        <img src={productData.image} alt={productData.title} className="w-100" />
-
-        <div>
-          <p>{productData.title}</p>
-          <p>{productData.description}</p>
-          <p>${productData.price}</p>
-        </div>
-
-        <div>
-          <Link onClick={() => loadCurrentItem(productData)} to={`/product/${productData.id}`}>
-            <button>View Item</button>
-          </Link>
-          <button onClick={() => addToCart(productData.id)}>Add To Cart</button>
-          {console.log(productData.id)}
+      <div className="col-md-4">
+        <div className="p-3">
+          <div className="text-center p-3">
+            <img src={productData.image} alt={productData.title} style={{height: "300px"}} />
+          </div>
+          <div>
+            <h4 className={`${textCrimson}`}>{productData.title}</h4>
+            <p>{productData.description}</p>
+            <h3 className={`pb-2 ${textBlue}`}>${productData.price}</h3>
+          </div>
+          <div className="d-flex justify-content-around">
+            <Link onClick={() => loadCurrentItem(productData)} to={`/product/${productData.id}`}>
+              <button className={`btn ${btnView} text-uppercase`}>View Item</button>
+            </Link>
+            <button onClick={() => addToCart(productData.id)} className="btn btn-success text-uppercase">Add To Cart</button>
+            {console.log(productData.id)}
+          </div>
         </div>
       </div>
     </Fragment>

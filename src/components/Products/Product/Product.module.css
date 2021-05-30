@@ -1,0 +1,16 @@
+.btnView,
+a > .btnView,
+.btnView:focus,
+.btnView:hover {
+  color: #fff !important;
+  border-color: mediumblue !important;
+  background-color: mediumblue !important;
+}
+
+.textBlue {
+  color: mediumblue;
+}
+
+.textCrimson {
+  color: crimson;
+}

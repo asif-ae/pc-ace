@@ -7,10 +7,12 @@ const Products = ({ products }) => {
   return (
     <Fragment>
       <Navbar></Navbar>
-      <div className="">
-        {products.map((product) => (
-          <Product key={product.id} productData={product} />
-        ))}
+      <div className="container">
+        <div className="row m-0 p-0">
+          {products.map((product) => (
+            <Product key={product.id} productData={product} />
+          ))}
+        </div>
       </div>
     </Fragment>
   );
