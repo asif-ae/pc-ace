@@ -14,7 +14,7 @@ const SingleItem = ({currentItem, addToCart}) => {
                 <p>{currentItem.title}</p>
                 <p>{currentItem.description}</p>
                 <p>{currentItem.price}</p>
-                <button onClick={() => addToCart(currentItem.id)} className="btn btn-primary">Add To Cart</button>
+                <button onClick={() => addToCart(currentItem.id)} className="btn btn-brand">Add To Cart</button>
             </div>
         </Fragment>
     );
