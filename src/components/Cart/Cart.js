@@ -28,25 +28,27 @@ const Cart = ({cart}) => {
         <div className="py-3">
           <div className="row p-0 m-0">
             <div className="col-md-7">
-              <div className="b">
+              <div className="py-3">
                 {
                   cart.map(item => <CartItem item={item} key={item.id}></CartItem>)
                 }
               </div>
             </div>
             <div className="col-md-5">
-              <div className="p-3 shadow rounded">
-                <h2 className="a">Cart Summery</h2>
-                <div className="a">
-                  <h5 className="a">Item(s): <span className={`${textBlue}`}>{totalItems} item(s)</span></h5>
+              <div className="py-3">
+                <div className="p-3 shadow rounded">
+                  <h2 className="a">Cart Summery</h2>
+                  <div className="a">
+                    <h5 className="a">Item(s): <span className={`${textBlue}`}>{totalItems} item(s)</span></h5>
+                  </div>
+                  <div className="a">
+                    <h4 className="a">Total Prise: <span className={`${textCrimson}`}>${totalPrice}</span></h4>
+                  </div>
+                  <div className="d-flex justify-content-end">
+                    <button className="btn btn-outline-success text-uppercase">Proceed To Checkout!</button>
+                  </div>
                 </div>
-                <div className="a">
-                  <h4 className="a">Total Prise: <span className={`${textCrimson}`}>${totalPrice}</span></h4>
-                </div>
-                <div className="d-flex justify-content-end">
-                  <button className="btn btn-outline-success text-uppercase">Proceed To Checkout!</button>
-                </div>
-              </div>            
+              </div>
             </div>
           </div>
         </div>
